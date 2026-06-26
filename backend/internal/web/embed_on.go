@@ -230,12 +230,20 @@ func injectSiteTitle(html, settingsJSON []byte) []byte {
 		return html
 	}
 
-	newTitle := []byte("<title>" + cfg.SiteName + " - AI API Gateway</title>")
+	newTitle := []byte("<title>" + normalizeSiteTitleName(cfg.SiteName) + " - AI Access Gateway</title>")
 	var buf bytes.Buffer
 	buf.Write(html[:titleStart])
 	buf.Write(newTitle)
 	buf.Write(html[titleEnd+len("</title>"):])
 	return buf.Bytes()
+}
+
+func normalizeSiteTitleName(siteName string) string {
+	trimmed := strings.TrimSpace(siteName)
+	if trimmed == "" || trimmed == "Sub2API" {
+		return "Synora"
+	}
+	return trimmed
 }
 
 // replaceNoncePlaceholder replaces the nonce placeholder with actual nonce value

@@ -1,0 +1,56 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shell" x1="74" y1="48" x2="438" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183B8C"/>
+      <stop offset="0.48" stop-color="#0B1F4A"/>
+      <stop offset="1" stop-color="#061225"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="95" y1="83" x2="430" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#73F7D7"/>
+      <stop offset="0.38" stop-color="#26D7F2"/>
+      <stop offset="0.72" stop-color="#4584FF"/>
+      <stop offset="1" stop-color="#7C5CFF"/>
+    </linearGradient>
+    <linearGradient id="ribbonA" x1="137" y1="140" x2="366" y2="371" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9DFFE4"/>
+      <stop offset="0.45" stop-color="#38E8E6"/>
+      <stop offset="1" stop-color="#2F7BFF"/>
+    </linearGradient>
+    <linearGradient id="ribbonB" x1="374" y1="143" x2="142" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DDCFF"/>
+      <stop offset="0.46" stop-color="#477BFF"/>
+      <stop offset="1" stop-color="#8564FF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(169 129) rotate(45) scale(325)">
+      <stop stop-color="#62F8D6" stop-opacity="0.55"/>
+      <stop offset="0.44" stop-color="#2F7BFF" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#061225" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="42" y="43" width="428" height="432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#020817" flood-opacity="0.35"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="#22D3EE" flood-opacity="0.28"/>
+    </filter>
+    <filter id="innerGlow" x="96" y="99" width="319" height="315" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#5FFFE1" flood-opacity="0.55"/>
+      <feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#11215B" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <rect x="62" y="58" width="388" height="388" rx="108" fill="url(#shell)"/>
+    <rect x="62" y="58" width="388" height="388" rx="108" fill="url(#glow)"/>
+    <rect x="77" y="73" width="358" height="358" rx="93" stroke="url(#edge)" stroke-opacity="0.72" stroke-width="8"/>
+    <path d="M132 89C153.5 69.4 181.5 58 212 58H319C391.3 58 450 116.7 450 189V219C422.8 151.9 361.2 105 289.8 105H199.5C174.2 105 151.1 99.4 132 89Z" fill="white" fill-opacity="0.08"/>
+  </g>
+
+  <g filter="url(#innerGlow)">
+    <path d="M179.7 134H331.4C344.4 134 350.8 149.8 341.5 158.8L310.6 188.5H204.9L285.1 236.1C322 258 322.6 311.2 286.1 334L216.2 377.7H114.6L250 294.6C258.6 289.3 258.4 276.6 249.6 271.6L149.7 214.3C118.8 196.6 126.1 150.8 160.8 143.3C166.9 137.5 173.1 134 179.7 134Z" fill="url(#ribbonA)"/>
+    <path d="M331.9 378H180.6C167.6 378 161.2 362.2 170.5 353.2L201.4 323.5H307.1L226.9 275.9C190 254 189.4 200.8 225.9 178L295.8 134.3H397.4L262 217.4C253.4 222.7 253.6 235.4 262.4 240.4L362.3 297.7C393.2 315.4 385.9 361.2 351.2 368.7C345.1 374.5 338.9 378 331.9 378Z" fill="url(#ribbonB)"/>
+    <path d="M178.4 173.6H286.7L252.1 195.1H193.2C180.3 195.1 177.6 210.3 188.4 216.5L286.7 273.2C309.4 286.3 309.2 319.4 286.4 332.3L239.2 359H196.8L270.1 314.7C281.1 308.1 280.9 292.3 269.8 285.9L171.8 229.5C142.4 212.6 144.6 173.6 178.4 173.6Z" fill="#07192F" fill-opacity="0.45"/>
+    <path d="M333.6 338.4H225.3L259.9 316.9H318.8C331.7 316.9 334.4 301.7 323.6 295.5L225.3 238.8C202.6 225.7 202.8 192.6 225.6 179.7L272.8 153H315.2L241.9 197.3C230.9 203.9 231.1 219.7 242.2 226.1L340.2 282.5C369.6 299.4 367.4 338.4 333.6 338.4Z" fill="#E7FFFB" fill-opacity="0.22"/>
+  </g>
+
+  <circle cx="145" cy="192" r="9" fill="#9DFFE4"/>
+  <circle cx="367" cy="320" r="9" fill="#7DDCFF"/>
+  <circle cx="256" cy="256" r="6" fill="white" fill-opacity="0.78"/>
+</svg>
