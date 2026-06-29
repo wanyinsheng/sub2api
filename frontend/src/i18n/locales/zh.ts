@@ -51,6 +51,8 @@ export default {
       multiAccount: '稳定可靠',
       multiAccountDesc: '智能调度多个上游账号，自动切换和负载均衡，告别频繁报错。',
       balanceQuota: '用多少付多少',
+      balanceQuotaRatePrimary: '0.3 元',
+      balanceQuotaRateUnit: '= 1 美刀',
       balanceQuotaDesc: '按实际使用量计费，支持设置配额上限，团队用量一目了然。'
     },
     // 优势对比

@@ -276,6 +276,12 @@
             <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
               {{ t('home.features.balanceQuota') }}
             </h3>
+            <div
+              class="mb-3 inline-flex items-baseline gap-1.5 rounded-full border border-amber-300/70 bg-amber-100 px-3 py-1 text-amber-900 shadow-sm shadow-amber-500/10 dark:border-amber-400/30 dark:bg-amber-400/15 dark:text-amber-100"
+            >
+              <span class="text-lg font-extrabold leading-none tracking-normal">{{ t('home.features.balanceQuotaRatePrimary') }}</span>
+              <span class="text-xs font-semibold text-amber-700 dark:text-amber-200">{{ t('home.features.balanceQuotaRateUnit') }}</span>
+            </div>
             <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
               {{ t('home.features.balanceQuotaDesc') }}
             </p>
@@ -390,14 +396,6 @@
           >
             {{ t('home.docs') }}
           </a>
-          <a
-            :href="githubUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-dark-400 dark:hover:text-white"
-          >
-            GitHub
-          </a>
         </div>
       </div>
     </footer>
@@ -410,6 +408,7 @@ import { useI18n } from 'vue-i18n'
 import { useAuthStore, useAppStore } from '@/stores'
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue'
 import Icon from '@/components/icons/Icon.vue'
+import { isProjectRepositoryUrl } from '@/utils/url'
 
 const { t } = useI18n()
 
@@ -420,7 +419,8 @@ const appStore = useAppStore()
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'Sub2API')
 const siteLogo = computed(() => appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '')
 const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || 'AI API Gateway Platform')
-const docUrl = computed(() => appStore.cachedPublicSettings?.doc_url || appStore.docUrl || '')
+const rawDocUrl = computed(() => appStore.cachedPublicSettings?.doc_url || appStore.docUrl || '')
+const docUrl = computed(() => isProjectRepositoryUrl(rawDocUrl.value) ? '' : rawDocUrl.value)
 const homeContent = computed(() => appStore.cachedPublicSettings?.home_content || '')
 
 // Check if homeContent is a URL (for iframe display)
@@ -431,9 +431,6 @@ const isHomeContentUrl = computed(() => {
 
 // Theme
 const isDark = ref(document.documentElement.classList.contains('dark'))
-
-// GitHub URL
-const githubUrl = 'https://github.com/Wei-Shaw/sub2api'
 
 // Auth state
 const isAuthenticated = computed(() => authStore.isAuthenticated)
