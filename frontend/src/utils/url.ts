@@ -41,20 +41,3 @@ export function sanitizeUrl(value: string, options: SanitizeOptions = {}): strin
     return ''
   }
 }
-
-export function isProjectRepositoryUrl(value?: string | null): boolean {
-  if (!value) return false
-
-  const normalized = sanitizeUrl(value)
-  if (!normalized) return false
-
-  try {
-    const parsed = new URL(normalized)
-    const host = parsed.hostname.toLowerCase()
-    const path = parsed.pathname.replace(/\/+$/, '').toLowerCase()
-
-    return host === 'github.com' && (path === '/wei-shaw/sub2api' || path.startsWith('/wei-shaw/sub2api/'))
-  } catch {
-    return false
-  }
-}

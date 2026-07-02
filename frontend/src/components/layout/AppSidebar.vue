@@ -17,7 +17,7 @@
           {{ siteName }}
         </span>
         <!-- Version Badge -->
-        <VersionBadge v-if="isAdmin" :version="siteVersion" />
+        <VersionBadge :version="siteVersion" />
       </div>
     </div>
 
