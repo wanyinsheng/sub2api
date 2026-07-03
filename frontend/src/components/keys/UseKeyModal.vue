@@ -548,7 +548,8 @@ wire_api = "responses"
 requires_openai_auth = true
 
 [features]
-goals = true`
+goals = true
+image_generation = true`
 
   // auth.json content
   const authContent = `{
@@ -590,7 +591,8 @@ requires_openai_auth = true
 
 [features]
 responses_websockets_v2 = true
-goals = true`
+goals = true
+image_generation = true`
 
   // auth.json content
   const authContent = `{
