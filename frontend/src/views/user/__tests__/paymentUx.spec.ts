@@ -67,6 +67,16 @@ describe('describePaymentScenarioError', () => {
       hintKey: 'payment.errors.alipayDesktopQrHint',
     })
   })
+
+  it('maps desktop Alipay page pay URLs on mobile to explicit guidance', () => {
+    expect(describePaymentScenarioError(
+      { reason: 'ALIPAY_DESKTOP_PAY_URL_ON_MOBILE' },
+      { paymentMethod: 'alipay', isMobile: true, isWechatBrowser: false },
+    )).toEqual({
+      messageKey: 'payment.errors.alipayDesktopPayOnMobile',
+      hintKey: 'payment.errors.alipayDesktopPayOnMobileHint',
+    })
+  })
 })
 
 describe('buildPaymentErrorToastMessage', () => {

@@ -763,7 +763,7 @@ async function createOrder(orderAmount: number, orderType: OrderType, planId?: n
     }
 
     if (decision.kind === 'unhandled') {
-      applyScenarioError({ reason: 'UNHANDLED_PAYMENT_SCENARIO' }, visibleMethod)
+      applyScenarioError({ reason: decision.reason || 'UNHANDLED_PAYMENT_SCENARIO' }, visibleMethod)
       return
     }
 

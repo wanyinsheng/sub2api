@@ -100,6 +100,13 @@ export function describePaymentScenarioError(
     }
   }
 
+  if (method === 'alipay' && code === 'ALIPAY_DESKTOP_PAY_URL_ON_MOBILE') {
+    return {
+      messageKey: 'payment.errors.alipayDesktopPayOnMobile',
+      hintKey: 'payment.errors.alipayDesktopPayOnMobileHint',
+    }
+  }
+
   if (method === 'alipay' && (code === 'PAYMENT_GATEWAY_ERROR' || code === 'UNHANDLED_PAYMENT_SCENARIO')) {
     return {
       messageKey: context.isMobile

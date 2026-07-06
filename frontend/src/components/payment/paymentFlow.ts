@@ -67,6 +67,7 @@ export interface PaymentLaunchDecision {
   kind: PaymentLaunchKind
   paymentState: PaymentRecoverySnapshot
   recovery: PaymentRecoverySnapshot
+  reason?: string
   stripeMethod?: StripeVisibleMethod
   oauth?: WechatOAuthInfo
   jsapi?: WechatJSAPIPayload
@@ -93,6 +94,18 @@ type StorageWriter = Pick<Storage, 'removeItem' | 'setItem'>
 export function normalizeVisibleMethod(method: string): VisiblePaymentMethod | '' {
   const normalized = VISIBLE_METHOD_ALIASES[method.trim() as keyof typeof VISIBLE_METHOD_ALIASES]
   return normalized ?? ''
+}
+
+function isAlipayDesktopPagePayUrl(payUrl: string): boolean {
+  const raw = payUrl.trim()
+  if (!raw) return false
+
+  try {
+    const parsed = new URL(raw)
+    return (parsed.searchParams.get('method') || '').trim().toLowerCase() === 'alipay.trade.page.pay'
+  } catch {
+    return /(?:^|[?&])method=alipay\.trade\.page\.pay(?:&|$)/i.test(raw)
+  }
 }
 
 export function getVisibleMethods(methods: Record<string, MethodLimit>): Record<string, MethodLimit> {
@@ -196,6 +209,15 @@ export function decidePaymentLaunch(
   const jsapiPayload = result.jsapi ?? result.jsapi_payload
   if (result.result_type === 'jsapi_ready' && jsapiPayload) {
     return { kind: 'wechat_jsapi', paymentState: baseState, recovery: baseState, jsapi: jsapiPayload }
+  }
+
+  if (visibleMethod === 'alipay' && context.isMobile && isAlipayDesktopPagePayUrl(baseState.payUrl)) {
+    return {
+      kind: 'unhandled',
+      paymentState: baseState,
+      recovery: baseState,
+      reason: 'ALIPAY_DESKTOP_PAY_URL_ON_MOBILE',
+    }
   }
 
   const normalizedPaymentMode = baseState.paymentMode.trim().toLowerCase()

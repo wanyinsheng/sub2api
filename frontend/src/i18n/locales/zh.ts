@@ -7192,6 +7192,8 @@ export default {
       mobilePaymentFallbackToQr: '当前商户未开通移动支付，已自动切换为扫码支付。',
       alipayDesktopUnavailable: '当前支付宝桌面支付未成功生成二维码。',
       alipayDesktopQrHint: '电脑端支付宝应展示扫码单，请刷新后重试，或确认浏览器未拦截当前支付页。',
+      alipayDesktopPayOnMobile: '当前支付宝通道返回的是电脑网页支付，手机端无法直接完成。',
+      alipayDesktopPayOnMobileHint: '请在电脑端付款，或联系管理员开启支付宝当面付二维码/手机网站支付。',
       alipayMobileUnavailable: '当前页面未成功跳转到支付宝。',
       alipayMobileOpenHint: '请允许当前页面打开支付宝 App，或改用系统浏览器重新发起支付。',
       // Structured error codes (reason strings from backend ApplicationError)

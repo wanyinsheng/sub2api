@@ -236,6 +236,33 @@ describe('decidePaymentLaunch', () => {
     expect(decision.paymentState.qrCode).toBe('https://pay.example.com/qr/session')
   })
 
+  it('blocks desktop Alipay page.pay URLs on mobile instead of redirecting', () => {
+    const decision = decidePaymentLaunch(createOrderResult({
+      pay_url: 'https://openapi.alipay.com/gateway.do?method=alipay.trade.page.pay&charset=utf-8',
+      payment_type: 'alipay',
+    }), {
+      visibleMethod: 'alipay',
+      orderType: 'balance',
+      isMobile: true,
+    })
+
+    expect(decision.kind).toBe('unhandled')
+    expect((decision as { reason?: string }).reason).toBe('ALIPAY_DESKTOP_PAY_URL_ON_MOBILE')
+  })
+
+  it('still redirects mobile Alipay wap.pay URLs', () => {
+    const decision = decidePaymentLaunch(createOrderResult({
+      pay_url: 'https://openapi.alipay.com/gateway.do?method=alipay.trade.wap.pay&charset=utf-8',
+      payment_type: 'alipay',
+    }), {
+      visibleMethod: 'alipay',
+      orderType: 'balance',
+      isMobile: true,
+    })
+
+    expect(decision.kind).toBe('redirect_waiting')
+  })
+
   it('does not affect non-alipay methods when forceQRCode is enabled', () => {
     const decision = decidePaymentLaunch(createOrderResult({
       pay_url: 'https://pay.example.com/mobile/session',

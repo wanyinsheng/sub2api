@@ -7012,6 +7012,8 @@ export default {
       mobilePaymentFallbackToQr: 'This merchant has not enabled mobile payment. The flow has been switched to QR payment automatically.',
       alipayDesktopUnavailable: 'The desktop Alipay flow could not generate a QR code.',
       alipayDesktopQrHint: 'Desktop Alipay should render a QR code. Refresh and retry, or make sure the payment page was not blocked.',
+      alipayDesktopPayOnMobile: 'This Alipay channel returned the desktop web checkout, which cannot complete directly on mobile.',
+      alipayDesktopPayOnMobileHint: 'Pay from a desktop browser, or ask an admin to enable Alipay face-to-face QR or mobile website payment.',
       alipayMobileUnavailable: 'This page could not hand off to Alipay.',
       alipayMobileOpenHint: 'Allow the current page to open the Alipay app, or retry from the system browser.',
       // Structured error codes (reason strings from backend ApplicationError)
