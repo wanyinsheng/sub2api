@@ -201,6 +201,12 @@ docker compose restart sub2api
 docker compose pull
 docker compose up -d
 
+# Pull and restart Sub2API after changing its image
+docker compose pull sub2api
+docker compose up -d sub2api
+docker compose logs -f sub2api
+docker compose ps
+
 # Remove all data (caution!)
 docker compose down -v
 ```

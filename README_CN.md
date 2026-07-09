@@ -389,6 +389,15 @@ docker compose -f docker-compose.local.yml pull
 docker compose -f docker-compose.local.yml up -d
 ```
 
+如果你已经在部署目录中把 Compose 文件保存为 `docker-compose.yml`，并且只是修改了 `sub2api` 的镜像地址或镜像版本，可以按下面顺序重新拉取并启动应用容器：
+
+```bash
+docker compose pull sub2api
+docker compose up -d sub2api
+docker compose logs -f sub2api
+docker compose ps
+```
+
 #### 轻松迁移（本地目录版）
 
 使用 `docker-compose.local.yml` 时，可以轻松迁移到新服务器：
